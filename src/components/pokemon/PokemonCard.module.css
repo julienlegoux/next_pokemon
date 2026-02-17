@@ -1,0 +1,88 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: var(--transition-fast);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+}
+
+.selected {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px var(--accent-primary);
+}
+
+.spriteContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.sprite {
+  image-rendering: pixelated;
+  width: 96px;
+  height: 96px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nameRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.level {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.types {
+  display: flex;
+  gap: 4px;
+}
+
+.hpSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hpBar {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hpFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width var(--transition-normal);
+}
+
+.hpText {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}

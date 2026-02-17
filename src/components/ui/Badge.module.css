@@ -1,0 +1,35 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+}
+
+.sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.md {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.earned {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--accent-secondary);
+}
+
+.unearned {
+  background: var(--bg-card);
+  opacity: 0.5;
+}
+
+.icon {
+  color: var(--accent-secondary);
+}
+
+.name {
+  font-weight: 500;
+}

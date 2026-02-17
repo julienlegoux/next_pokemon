@@ -1,0 +1,46 @@
+.container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-elevated);
+  animation: slideIn 200ms ease;
+  min-width: 200px;
+}
+
+.success {
+  background: var(--accent-success);
+  color: white;
+}
+
+.error {
+  background: var(--accent-danger);
+  color: white;
+}
+
+.info {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

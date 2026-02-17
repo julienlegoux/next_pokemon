@@ -1,66 +1,62 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+import { useAuth } from '@/components/providers/AuthProvider'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+import styles from './page.module.css'
+import Link from 'next/link'
+import { Loader } from '@/components/ui/Loader'
 
 export default function Home() {
+  const { user, isLoading } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.replace('/dashboard')
+    }
+  }, [user, isLoading, router])
+
+  if (isLoading) {
+    return (
+      <div className={styles.loading}>
+        <Loader size={50} />
+      </div>
+    )
+  }
+
+  if (user) return null
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <div className={styles.hero}>
+          <h1 className={styles.title}>
+            Pokemon <span className={styles.accent}>Fight</span>
+          </h1>
+          <p className={styles.description}>
+            Deviens le meilleur dresseur ! Affronte les champions d&apos;arene
+            dans des combats strategiques tour par tour.
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <div className={styles.features}>
+            <div className={styles.feature}>
+              <span className={styles.featureIcon}>&#9876;</span>
+              <span>Combats strategiques</span>
+            </div>
+            <div className={styles.feature}>
+              <span className={styles.featureIcon}>&#127942;</span>
+              <span>8 arenes a conquerir</span>
+            </div>
+            <div className={styles.feature}>
+              <span className={styles.featureIcon}>&#129302;</span>
+              <span>Champions IA intelligents</span>
+            </div>
+          </div>
+          <Link href="/login" className={styles.cta}>
+            Commencer l&apos;aventure
+          </Link>
         </div>
       </main>
     </div>
-  );
+  )
 }

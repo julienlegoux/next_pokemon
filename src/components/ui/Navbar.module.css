@@ -1,0 +1,84 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.logoAccent {
+  color: var(--accent-primary);
+}
+
+.links {
+  display: flex;
+  gap: 4px;
+}
+
+.link {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.linkActive {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trainer {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.logout {
+  font-size: 13px;
+  color: var(--accent-danger);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.logout:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .inner {
+    gap: 12px;
+  }
+}

@@ -1,0 +1,188 @@
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: var(--text-secondary);
+}
+
+.back {
+  display: inline-block;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: var(--transition-fast);
+}
+
+.back:hover {
+  color: var(--text-primary);
+}
+
+.header {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.spriteContainer {
+  flex-shrink: 0;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.sprite {
+  image-rendering: pixelated;
+  width: 160px;
+  height: 160px;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.id {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.types {
+  display: flex;
+  gap: 6px;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.physical {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.attacks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attackRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.attackName {
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.attackDetail {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.evolutions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.evoItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.evoItem:hover {
+  background: var(--bg-elevated);
+}
+
+.evoArrow {
+  color: var(--text-muted);
+}
+
+.evoName {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.evoLevel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .types {
+    justify-content: center;
+  }
+
+  .physical {
+    justify-content: center;
+  }
+
+  .name {
+    font-size: 24px;
+  }
+}
