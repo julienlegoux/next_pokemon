@@ -35,30 +35,43 @@ async function proxyRequest(req: NextRequest, params: Promise<{ proxy: string[] 
     }
   }
 
+  let response: Response
   try {
-    const response = await fetch(url, fetchOptions)
-    const data = await response.json()
-
-    const res = NextResponse.json(data, { status: response.status })
-
-    // Set token cookie on successful signin/signup
-    if (response.ok && (path === 'signin' || path === 'signup') && data.token) {
-      res.cookies.set('token', data.token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        maxAge: 60 * 60 * 24 * 7, // 7 days
-        path: '/',
-      })
-    }
-
-    return res
-  } catch {
+    response = await fetch(url, fetchOptions)
+  } catch (err) {
+    console.error(`[auth proxy] fetch failed for ${url}:`, err)
     return NextResponse.json(
       { message: 'Erreur de connexion au serveur' },
       { status: 502 }
     )
   }
+
+  const text = await response.text()
+  let data: Record<string, unknown>
+  try {
+    data = JSON.parse(text)
+  } catch {
+    console.error(`[auth proxy] non-JSON response from ${url} (${response.status}):`, text.slice(0, 500))
+    return NextResponse.json(
+      { message: `Le serveur a répondu avec une erreur (${response.status})` },
+      { status: response.status || 502 }
+    )
+  }
+
+  const res = NextResponse.json(data, { status: response.status })
+
+  // Set token cookie on successful signin/signup
+  if (response.ok && (path === 'signin' || path === 'signup') && typeof data.token === 'string') {
+    res.cookies.set('token', data.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
+    })
+  }
+
+  return res
 }
 
 export async function GET(req: NextRequest, context: { params: Promise<{ proxy: string[] }> }) {
