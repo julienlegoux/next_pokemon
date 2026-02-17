@@ -4,7 +4,7 @@ export async function POST(req: NextRequest) {
   const { battleState } = await req.json()
 
   const apiKey = process.env.OPENROUTER_API_KEY
-  const model = process.env.MODEL_OPENROUTER || 'google/gemini-2.0-flash-001'
+  const model = process.env.MODEL_OPENROUTER
 
   if (!apiKey) {
     return NextResponse.json(
