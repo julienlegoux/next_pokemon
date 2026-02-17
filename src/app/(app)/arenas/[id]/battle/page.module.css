@@ -1,0 +1,44 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.loadingText {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.error {
+  color: var(--accent-danger);
+  font-size: 14px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.attackSection {
+  /* Attack panel */
+}
+
+.logSection {
+  /* Battle log */
+}
+
+@media (max-width: 768px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

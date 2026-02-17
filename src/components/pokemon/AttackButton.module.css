@@ -1,0 +1,52 @@
+.button {
+  background: var(--bg-card);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  text-align: left;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--bg-elevated);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.typeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.bottom {
+  display: flex;
+  gap: 10px;
+}
+
+.detail {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.pp {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: auto;
+}

@@ -1,0 +1,127 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 300ms ease;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  animation: scaleIn 400ms ease;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.victory {
+  color: var(--accent-success);
+}
+
+.defeat {
+  color: var(--accent-danger);
+}
+
+.rewards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.reward {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.rewardLabel {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.rewardValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.badgeReward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid var(--accent-secondary);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--accent-secondary);
+}
+
+.badgeIcon {
+  font-size: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn {
+  display: block;
+  padding: 12px;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 15px;
+  transition: var(--transition-fast);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btnSecondary {
+  display: block;
+  padding: 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 14px;
+  transition: var(--transition-fast);
+}
+
+.btnSecondary:hover {
+  background: var(--bg-hover);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
