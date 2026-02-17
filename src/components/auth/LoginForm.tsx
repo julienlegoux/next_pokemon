@@ -2,8 +2,40 @@
 
 import { useState } from 'react'
 import { useAuth } from '@/components/providers/AuthProvider'
-import { authAPI } from '@/lib/api'
+import { authAPI, APIError } from '@/lib/api'
 import styles from './LoginForm.module.css'
+
+function extractErrorMessage(err: unknown): string {
+  if (!(err instanceof APIError) || !err.body) {
+    return err instanceof Error ? err.message : 'Une erreur est survenue'
+  }
+
+  const body = err.body as Record<string, unknown>
+  const errors = body.errors
+  if (!errors) return err.message
+
+  // Array format: [{ message: "..." }] or ["msg"]
+  if (Array.isArray(errors)) {
+    return errors
+      .map((e: unknown) => {
+        if (typeof e === 'string') return e
+        const msg = (e as Record<string, unknown>).message
+        return typeof msg === 'string' ? msg : ''
+      })
+      .filter(Boolean)
+      .join('. ') || err.message
+  }
+
+  // Object format: { field: ["msg"] }
+  if (typeof errors === 'object') {
+    return Object.values(errors as Record<string, string[]>)
+      .flat()
+      .map(String)
+      .join('. ') || err.message
+  }
+
+  return err.message
+}
 
 export function LoginForm() {
   const { login } = useAuth()
@@ -28,7 +60,7 @@ export function LoginForm() {
         login(token, user)
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue')
+      setError(extractErrorMessage(err))
     } finally {
       setLoading(false)
     }
