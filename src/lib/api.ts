@@ -54,10 +54,10 @@ export const authAPI = {
       body: JSON.stringify({ email, password }),
     }),
 
-  signup: (email: string, password: string, trainer_name: string) =>
+  signup: (email: string, password: string, username: string) =>
     fetchAPI<{ token: string; user: User }>('/auth/signup', {
       method: 'POST',
-      body: JSON.stringify({ email, password, trainer_name }),
+      body: JSON.stringify({ email, password, username }),
     }),
 
   me: (token: string) =>

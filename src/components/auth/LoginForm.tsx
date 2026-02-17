@@ -103,6 +103,8 @@ export function LoginForm() {
                 className={styles.input}
                 placeholder="Sacha"
                 required
+                minLength={3}
+                maxLength={30}
               />
             </div>
           )}
@@ -130,7 +132,7 @@ export function LoginForm() {
               className={styles.input}
               placeholder="••••••••"
               required
-              minLength={6}
+              minLength={8}
             />
           </div>
 
