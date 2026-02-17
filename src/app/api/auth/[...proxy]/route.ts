@@ -6,7 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL
 async function proxyRequest(req: NextRequest, params: Promise<{ proxy: string[] }>) {
   const { proxy } = await params
   const path = proxy.join('/')
-  const url = `${API_URL}/${path}`
+  const url = `${API_URL}/api/auth/${path}`
 
   const cookieStore = await cookies()
   const tokenCookie = cookieStore.get('token')
